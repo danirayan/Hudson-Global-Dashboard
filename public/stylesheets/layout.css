@@ -233,27 +233,3 @@ article.build100 section.description p {
   font-size: 1.33em;
 }
 
-/* Tramtracker
---------------------------------------------------------------------- */
-article.tramtracker {
-  padding: 10px;
-  background-color: white;
-  width: 230px;
-}
-
-article.tramtracker section h2 {
-  color: black;
-}
-
-article.tramtracker ul {
-  padding: 0;
-  margin: 0;
-}
-
-article.tramtracker section {
-  margin-bottom: 10px;
-}
-
-article.tramtracker ul li {
-  list-style: none;
-}
