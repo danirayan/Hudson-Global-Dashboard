@@ -7,9 +7,22 @@
   <link rel="stylesheet" href="/stylesheets/colours.css" type="text/css" />
   <link rel="stylesheet" href="/stylesheets/nav.css" type="text/css" />
   <script type="text/javascript" src="/javascripts/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="/javascripts/jquery.cycle.all.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('.slideshow').cycle({
+		fx: 'fadeZoom', // choose your transition type, ex: fade, scrollUp, shuffle, etc...
+                speed: 1500,
+                timeout: 5000
+	});
+  });
+  setTimeout('location.reload()', 60000);
+  </script>
   </head>
 <body>
-  <section id="content">
+ <section id="content">
+  <div class="slideshow">
+   <% index = 0 %>
     <% @builds_details.each do |server| %>
       <% server.each do |job| %>
         <% if job['healthReport'] && job['healthReport'].length != 0 %>
@@ -17,20 +30,24 @@
             <% @build_score =  health['score'] %>
           <% end %>
         <% end %>
-      
-        <article class="<%= job['color'] %> build<%= @build_score %>">
+     <%if index%6 == 0%>
+     <div class = "page<%= index%>" style="width: 100%; position: absolute; top: 0px; left: 20px; display: none; z-index: 1;">
+     <% end %> 
+        <article class="<%= job['color'] %> build_equal">
           <header>
             <h1><a href="<%= job['url'] %>"><%= job['displayName'] %></a></h1>
           </header>
           <%= partial 'dashboard/build_stats', :locals => {:job => job } %>
           <%= partial 'dashboard/details', :locals => {:job => job } %>
         </article>
+     <%if (index+1)%6 == 0%>
+     </div>
+     <% end %> 
+     <%index = index +1%>
       <% end %>
     <% end %>
+   </div>
   </section>
-  <nav>
-    <h1><a href="/admin/" title="Administration">Hudson Global Dashboard Admin</a></h1>
-  </nav>
 </body>
 
 </html>

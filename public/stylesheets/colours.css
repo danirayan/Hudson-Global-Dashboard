@@ -46,3 +46,10 @@ article.disabled section.buildStats  { background-color: #808180 }
 article.disabled section.details     { background-color: #5E5F5E }
 article.disabled section.committerDetails { background-color: #5E5F5E }
 article.disabled section.description { background-color: #343534 }
+
+/* Grey Anime Builds - need to fix */
+article.grey_anime header              { background-color: #A8A9A9 }
+article.grey_anime section.buildStats  { background-color: #808185 }
+article.grey_anime section.details     { background-color: #5E5F5F }
+article.grey_anime section.committerDetails { background-color: #5E5F5F }
+article.grey_anime section.description { background-color: #343539 }
